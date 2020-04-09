@@ -22,9 +22,10 @@ class IdeaForm extends React.Component{
             {
                 idea: idea
             }
-        )
+        )   
         .then(response => {
             console.log(response)
+            this.props.updateIdea(response.data)
         })
         .catch(error => console.log(error));
     }
@@ -33,7 +34,7 @@ class IdeaForm extends React.Component{
             <div className="tile" key={this.props.idea.id}>
                 <form onBlur={this.handleBlur}>
                     <input className="input" type="text" name="title" value={this.state.title}
-                        onChange={this.handleChange} placeholder="Enter a Titile"/>
+                        onChange={this.handleChange} placeholder="Enter a Titile" />
                     <textarea className="input" name="body" value= {this.state.body} 
                         onChange={this.handleChange} placeholder="Describe your idea"/>
 
