@@ -18,7 +18,7 @@ class IdeaForm extends React.Component{
             body: this.state.body
         }
         axios.put(
-            `http://localhost:3001/api/v1/ideas/${this.props.idea.id}`,
+            process.env.REACT_APP_API_URL + `/api/v1/ideas/${this.props.idea.id}`,
             {
                 idea: idea
             }

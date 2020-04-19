@@ -28,7 +28,8 @@ class IdeaContainer extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3001/api/v1/ideas')
+        debugger
+        axios.get(process.env.REACT_APP_API_URL + '/api/v1/ideas')
         .then(response => {
             console.log(response)
             debugger
@@ -39,7 +40,7 @@ class IdeaContainer extends React.Component {
 
     addNewIdea = () => {
         axios.post(
-            'http://localhost:3001/api/v1/ideas',
+            process.env.REACT_APP_API_URL + '/api/v1/ideas',
             {idea:
                 {
                     title: '',
@@ -69,7 +70,7 @@ class IdeaContainer extends React.Component {
     }
 
     deleteIdea = (id) =>{
-        axios.delete(`http://localhost:3001/api/v1/ideas/${id}`)
+        axios.delete(process.env.REACT_APP_API_URL + `/api/v1/ideas/${id}`)
         .then(response => {
             debugger
             const ideaIndex = this.state.ideas.findIndex(x => x.id === id)
